@@ -1,0 +1,154 @@
+# Cursor Rules - D&D Character Sheet Manager (Wyrd)
+
+Read CLAUDE.md for full context. D&D 5e character sheet with undo/redo. Tech: Vite + SolidJS + TailwindCSS + Biome + Vitest.
+
+## Core Patterns
+
+**History/Undo System**
+```typescript
+// Use structuredClone for snapshots
+const snapshot = structuredClone(character());
+snapshot.level += 1;
+appendToHistory(snapshot);
+```
+
+**Validation (return errors, don't throw)**
+```typescript
+type Result<T> = 
+  | { success: true; data: T }
+  | { success: false; error: string };
+```
+
+**SolidJS Memoization**
+```typescript
+// ✅ Memoize expensive calculations
+const ac = createMemo(() => calculateAC(character()));
+
+// ❌ Don't compute in JSX
+<div>{calculateAC(character())}</div>
+```
+
+**Batch Updates**
+```typescript
+import { batch } from 'solid-js';
+
+batch(() => {
+  setState('character', 'hp', 50);
+  setState('character', 'level', 5);
+});
+```
+
+## File Organization
+```
+app/core/       → Pure functions, no SolidJS imports
+app/stores/     → SolidJS stores
+app/components/ → UI (flat structure)
+app/lib/        → App helpers (constants, storage)
+public/data/    → Static JSON (classes, races, features, traits, spells)
+scripts/        → Data fetchers
+```
+
+**Import Rules:**
+- `core/` cannot import from `stores/` or `components/`
+- Everything else can import from anywhere
+
+## Component Structure
+
+Keep it flat:
+```
+components/
+├── ui/                    # Design system
+├── CharacterSheet/        # Main view
+├── CreateWizard/          # Character creation
+├── LevelUpWizard/         # Level up flow
+└── HistoryControls.tsx    # Undo/redo
+```
+
+Don't nest unnecessarily (no `create/`, `manage/` groupings).
+
+## TypeScript Standards
+- Strict mode enabled
+- Prefer `type` over `interface`
+- Use discriminated unions for Result types
+- No `any`, use `unknown` if needed
+
+## Naming
+- Operations: `levelUp()`, `addSpell()`
+- Validators: `validateLevelUp()`
+- Calculators: `calculateAC()`
+- Components: PascalCase
+- Files: kebab-case
+
+## D&D Rules
+**Critical gotchas:**
+- Multiclass spell slots: NOT sum of levels (use multiclass table from SRD)
+- Multiclass requires 13 in specific abilities (varies by class)
+- Proficiency bonus: total character level, not class level
+
+Always cite D&D 5e SRD when implementing mechanics.
+
+## Static Data
+- Data from dnd5eapi.co (stats) + open5e.com (flavor)
+- Merged in `scripts/fetchers/merge-data.ts`
+- Five JSON files: classes, races, features, traits, spells
+- Committed to git, versioned, not fetched at runtime
+
+## Accessibility
+- All interactive elements keyboard navigable (Tab, Enter, Space, Escape)
+- Use semantic HTML (`<button>`, not `<div onClick>`)
+- ARIA labels for icon-only buttons
+- `role="dialog"` + `aria-modal="true"` for modals
+- `aria-live` for dynamic stat changes (HP, level)
+
+```tsx
+// Good
+<button aria-label="Undo" onClick={undo}>
+  <UndoIcon />
+</button>
+
+// Bad
+<div class="cursor-pointer" onClick={undo}>
+  <UndoIcon />
+</div>
+```
+
+## Testing
+Focus on `app/core/` (pure functions):
+```typescript
+import { describe, it, expect } from 'vitest';
+
+describe('levelUp', () => {
+  it('increases level immutably', () => {
+    const char = createBaseCharacter();
+    const result = levelUp(char, 'fighter');
+    
+    expect(result.level).toBe(2);
+    expect(char.level).toBe(1); // Original unchanged
+  });
+});
+```
+
+Test multiclass edge cases (Paladin 2/Warlock 3/Sorcerer 15).
+
+## Don't Suggest
+- External state libraries (Zustand, Redux)
+- Backend solutions
+- Component libraries (Shadcn, MUI)
+- CSS-in-JS (use Tailwind)
+
+## Code Review Checklist
+- [ ] Character updates use `structuredClone()`
+- [ ] Operations are pure (in `app/core/`)
+- [ ] Validation before mutations
+- [ ] Expensive calcs use `createMemo`
+- [ ] Interactive elements keyboard accessible
+- [ ] D&D rules correct (check SRD)
+- [ ] No SolidJS imports in `core/`
+
+## Communication
+- Be direct about problems - don't sugarcoat
+- Explain WHY, not just WHAT
+- Point out accessibility issues immediately
+- Flag incorrect D&D rules
+- Prioritize simple, maintainable code
+- Challenge over-engineering
