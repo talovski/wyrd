@@ -8,12 +8,21 @@ importers:
 
   .:
     dependencies:
+      '@evilmartians/harmony':
+        specifier: ^1.4.0
+        version: 1.4.0
+      '@fontsource-variable/karla':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@solidjs/router':
         specifier: ^0.15.3
         version: 0.15.3(solid-js@1.9.9)
       solid-js:
         specifier: ^1.9.9
         version: 1.9.9
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
       tailwindcss:
         specifier: ^4.1.16
         version: 4.1.16
@@ -331,6 +340,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@evilmartians/harmony@1.4.0':
+    resolution: {integrity: sha512-NgKkhTnQOSE07IvDxHHPLzFF81TaWU1Ir5nmaRM+PebXAol5vNXnk+Lp2JPgj1P/PBTu6lzSWckSpNjC19XSUw==}
+
+  '@fontsource-variable/karla@5.2.8':
+    resolution: {integrity: sha512-JuJZVY/r5InCfkKb3jp5XCwuypIvc62barKaxzSAYnxzHo9YnCfZDWDjL+gbSYrUI+lVxhEyS+7QkOuVBvWcOA==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -885,6 +900,9 @@ packages:
   std-env@3.10.0:
     resolution: {integrity: sha512-5GS12FdOZNliM5mAOxFRg7Ir0pWz8MdpYm6AY6VPkGpbA7ZzmbzNcBJQ0GPvvyWgcY7QAhCgf9Uy89I03faLkg==}
 
+  tailwind-merge@3.3.1:
+    resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
+
   tailwindcss@4.1.16:
     resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
 
@@ -1248,6 +1266,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.11':
     optional: true
+
+  '@evilmartians/harmony@1.4.0': {}
+
+  '@fontsource-variable/karla@5.2.8': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -1736,6 +1758,8 @@ snapshots:
   stackback@0.0.2: {}
 
   std-env@3.10.0: {}
+
+  tailwind-merge@3.3.1: {}
 
   tailwindcss@4.1.16: {}
 

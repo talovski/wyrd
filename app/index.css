@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import "@fontsource-variable/karla";
+@import "@evilmartians/harmony/tailwind.css";
+
+@theme {
+	--font-sans: "Karla Variable", "PT Sans", sans-serif;
+	--shadow-pressed:
+		inset 22px 22px 43px var(--sh-start), inset -22px -22px 43px var(--sh-end);
+}

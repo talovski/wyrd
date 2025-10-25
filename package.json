@@ -17,8 +17,11 @@
 		"precommit": "biome check --write"
 	},
 	"dependencies": {
+		"@evilmartians/harmony": "^1.4.0",
+		"@fontsource-variable/karla": "^5.2.8",
 		"@solidjs/router": "^0.15.3",
 		"solid-js": "^1.9.9",
+		"tailwind-merge": "^3.3.1",
 		"tailwindcss": "^4.1.16"
 	},
 	"devDependencies": {
