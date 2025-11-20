@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@fontsource-variable/karla";
+@import "@fontsource-variable/literata";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Karla Variable", "PT Sans", sans-serif;
+  --font-serif: "Literata Variable", "Times New Roman", serif;
+}
+
+body {
+  @apply min-h-screen bg-zinc-100 text-zinc-950;
+}
+
+button {
+  @apply rounded-sm border border-zinc-300 bg-zinc-200 px-3 py-1 font-medium shadow-sm hover:bg-zinc-300 active:scale-98;
+}
+
+h1 {
+  @apply mt-4 mb-2 text-4xl font-bold;
+}
+
+h2 {
+  @apply mt-4 mb-2 text-3xl font-bold;
+}
+
+h3 {
+  @apply mt-4 mb-2 text-2xl font-bold;
+}
+
+*:focus-visible {
+  @apply ring-3 ring-purple-800 outline-none;
+}
