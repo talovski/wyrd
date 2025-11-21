@@ -1,4 +1,5 @@
 import type { ApiReference5E, From5E } from "./5e-api";
+import type { Level5E } from "./level";
 
 export type ClassIndex =
   | "barbarian"
@@ -25,6 +26,7 @@ export interface Class5E extends ApiReference5E {
   };
   starting_equipment_options: From5E;
   class_levels: string;
+  levels: Level5E[];
   multi_classing: {
     prerequisites: {
       ability_score: ApiReference5E;
