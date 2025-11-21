@@ -8,12 +8,11 @@ export default [
   solid,
   {
     rules: {
-      // Allow the stuff you want
       "@typescript-eslint/no-unused-vars": "off",
       "no-console": "off",
 
-      // Optional: turn off other noisy TS rules
       "@typescript-eslint/no-explicit-any": "off",
+      "solid/no-innerhtml": "off",
     },
   },
   {
