@@ -30,7 +30,7 @@ export const Spells = (props: { cls: string }) => {
 
   return (
     <div>
-      <p class="font-bold text-lg">Spells</p>
+      <p class="text-lg font-bold">Spells</p>
       <For each={filteredSpells()}>{(spell) => <Spell {...spell} />}</For>
     </div>
   );
@@ -41,9 +41,9 @@ const Spell = (spell: Spell5E) => {
 
   return (
     <div>
-      <p class="font-bold text-md">{spell.name}</p>
+      <p class="text-md font-bold">{spell.name}</p>
       <Show when={html()}>
-        <div class="font-serif flex flex-col gap-2">
+        <div class="flex flex-col gap-2 font-serif">
           <p innerHTML={html()} />
         </div>
       </Show>

@@ -33,8 +33,8 @@ export const Checkbox = (props: CheckboxProps) => {
       />
       <div
         class={merge(
-          "flex aspect-[1] w-5 items-center justify-center overflow-hidden rounded-sm border-2 border-zinc-500 true:border-zinc-900 border-solid bg-zinc-100 p-0.5",
-          "peer-focus-visible:-outline-offset-1 peer-focus-visible:outline-[3px] peer-focus-visible:outline-purple-800 peer-focus-visible:outline-solid",
+          "flex aspect-[1] w-5 items-center justify-center overflow-hidden rounded-sm border-2 border-solid border-zinc-500 bg-zinc-100 p-0.5",
+          "peer-focus-visible:outline-[3px] peer-focus-visible:-outline-offset-1 peer-focus-visible:outline-purple-800 peer-focus-visible:outline-solid",
           props.checked && "border-zinc-900",
         )}
         aria-hidden="true"

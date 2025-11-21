@@ -24,9 +24,9 @@ export const Feature = (props: ApiReference5E) => {
 
   return (
     <div>
-      <p class="font-bold text-lg">Level 1 features</p>
-      <p class="font-bold text-lg">{feature()?.name}</p>
-      <div class="font-serif flex flex-col gap-2">
+      <p class="text-lg font-bold">Level 1 features</p>
+      <p class="text-lg font-bold">{feature()?.name}</p>
+      <div class="flex flex-col gap-2 font-serif">
         <For each={feature()?.desc}>{(p) => <p>{p}</p>}</For>
       </div>
     </div>
