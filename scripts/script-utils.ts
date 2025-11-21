@@ -9,18 +9,14 @@ export const fetchInBatches = async <T>(urls: string[]): Promise<T[]> => {
 
   for (let i = 0; i < urls.length; i += batchSize) {
     const batch = urls.slice(i, i + batchSize);
-    console.log(
-      `Fetching batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(urls.length / batchSize)}...`,
-    );
+    console.log(`Fetching batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(urls.length / batchSize)}...`);
 
     const res = await Promise.all(
       batch.map(async (url) => {
         try {
           const response = await fetch(url);
           if (!response.ok) {
-            throw new Error(
-              `HTTP ${response.status}: ${response.statusText} for ${url}`,
-            );
+            throw new Error(`HTTP ${response.status}: ${response.statusText} for ${url}`);
           }
           return await response.json();
         } catch (error) {
@@ -40,19 +36,12 @@ export const fetchInBatches = async <T>(urls: string[]): Promise<T[]> => {
   return results;
 };
 
-export const saveToDisk = async (
-  api: "5e" | "open-dnd",
-  category: string,
-  data: any,
-) => {
+export const saveToDisk = async (api: "5e" | "open-dnd", category: string, data: any) => {
   try {
-    await Bun.write(
-      `public/data/${api}/${category}.json`,
-      JSON.stringify(data, null, 2),
-    );
-    console.log(`✓ ${category}: ${data.length} fetched`);
+    await Bun.write(`public/data/${api}/${category}.json`, JSON.stringify(data, null, 2));
+    console.log(`${category}: ${data.length} fetched`);
   } catch (error) {
-    console.error("❌ error:", error);
+    console.error("error:", error);
     process.exit(1);
   }
 };
