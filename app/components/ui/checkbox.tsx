@@ -3,8 +3,7 @@ import { type ComponentProps, type JSX, createUniqueId } from "solid-js";
 
 import { merge } from "~/utils/merge";
 
-interface CheckboxProps
-  extends Omit<ComponentProps<"input">, "type" | "onChange"> {
+interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "onChange"> {
   checked: boolean;
   children: JSX.Element;
   disabled?: boolean;
