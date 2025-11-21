@@ -1,7 +1,7 @@
-import { Classes } from "~/components/class-card/classes";
+import { ClassList } from "~/components/class-card/class-list";
 
 const HomePage = () => {
-  return <Classes />;
+  return <ClassList />;
 };
 
 export default HomePage;

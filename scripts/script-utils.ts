@@ -1,24 +1,22 @@
 export const DND5E_API_URL = "https://www.dnd5eapi.co";
 export const OPEN_DND_API_URL = "https://api.open5e.com/";
 
-export const fetchInBatches = async <T>(urls: string[]): Promise<T[]> => {
-  const results: T[] = [];
+export const batch = async <T>(urls: string[]): Promise<T[]> => {
+  const data: T[] = [];
 
-  const batchSize = 10;
+  const amount = 10;
   const delay = 100;
 
-  for (let i = 0; i < urls.length; i += batchSize) {
-    const batch = urls.slice(i, i + batchSize);
-    console.log(`Fetching batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(urls.length / batchSize)}...`);
+  for (let i = 0; i < urls.length; i += amount) {
+    const slice = urls.slice(i, i + amount);
+    console.log(`Fetching batch ${Math.floor(i / amount) + 1}/${Math.ceil(urls.length / amount)}...`);
 
     const res = await Promise.all(
-      batch.map(async (url) => {
+      slice.map(async (url) => {
         try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText} for ${url}`);
-          }
-          return await response.json();
+          const r = await fetch(url);
+          if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText} for ${url}`);
+          return await r.json();
         } catch (error) {
           console.error(`Failed to fetch ${url}:`, error);
           throw error;
@@ -26,14 +24,14 @@ export const fetchInBatches = async <T>(urls: string[]): Promise<T[]> => {
       }),
     );
 
-    results.push(...res);
+    data.push(...res);
 
-    if (i + batchSize < urls.length) {
+    if (i + amount < urls.length) {
       await new Promise((resolve) => setTimeout(resolve, delay));
     }
   }
 
-  return results;
+  return data;
 };
 
 export const saveToDisk = async (api: "5e" | "open-dnd", category: string, data: any) => {

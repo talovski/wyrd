@@ -1,7 +1,7 @@
 import { CheckIcon } from "lucide-solid";
 import { type ComponentProps, type JSX, createUniqueId } from "solid-js";
 
-import { merge } from "~/utils/merge";
+import classnames from "~/utils/classnames";
 
 interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "onChange"> {
   checked: boolean;
@@ -15,7 +15,7 @@ export const Checkbox = (props: CheckboxProps) => {
 
   return (
     <label
-      class={merge(
+      class={classnames(
         "relative flex h-fit w-fit cursor-pointer items-center gap-[0.45rem]",
         props.disabled && "cursor-not-allowed opacity-50",
       )}
@@ -32,7 +32,7 @@ export const Checkbox = (props: CheckboxProps) => {
         type="checkbox"
       />
       <div
-        class={merge(
+        class={classnames(
           "flex aspect-[1] w-5 items-center justify-center overflow-hidden rounded-sm border-2 border-solid border-zinc-500 bg-zinc-100 p-0.5",
           "peer-focus-visible:outline-[3px] peer-focus-visible:-outline-offset-1 peer-focus-visible:outline-purple-800 peer-focus-visible:outline-solid",
           props.checked && "border-zinc-900",
