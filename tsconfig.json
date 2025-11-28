@@ -13,6 +13,7 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "resolveJsonModule": true,
 
     /* SolidJS */
     "jsx": "preserve",
@@ -26,7 +27,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "plugins": [{ "name": "typescript-styled-plugin" }]
   },
   "include": ["app", "vite.config.ts"]
 }
