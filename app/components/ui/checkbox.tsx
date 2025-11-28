@@ -1,5 +1,6 @@
 import { CheckIcon } from "lucide-solid";
-import { createUniqueId, type ComponentProps, type JSX } from "solid-js";
+import { type ComponentProps, type JSX, createUniqueId } from "solid-js";
+
 import classnames from "~/utils/classnames";
 
 interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "onChange"> {
@@ -33,7 +34,7 @@ export const Checkbox = (props: CheckboxProps) => {
       <div
         class={classnames(
           "border-base-500 bg-base-100 flex aspect-[1] w-5 items-center justify-center overflow-hidden rounded-sm border-2 border-solid p-0.5",
-          "peer-focusflex -visible:outline-[3px] peer-focus-visible:-outline-offset-1 peer-focus-visible:outline-purple-800 peer-focus-visible:outline-solid",
+          "peer-focus-visible:outline-[3px] peer-focus-visible:-outline-offset-1 peer-focus-visible:outline-purple-800 peer-focus-visible:outline-solid",
           props.checked && "border-base-800",
         )}
         aria-hidden="true"

@@ -1,7 +1,9 @@
 import { marked } from "marked";
 import { For, Show } from "solid-js";
+
 import { Expandable } from "~/components/ui/expandable";
 import type { Spell5E } from "~/types/5e/spell";
+
 import { Masonry } from "../ui/masonry";
 
 type SpellsProps = {

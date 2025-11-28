@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-solid";
-import { createSignal, createUniqueId, type JSX } from "solid-js";
+import { type JSX, createSignal, createUniqueId } from "solid-js";
+
 import classnames from "~/utils/classnames";
 
 type ExpandableProps = {

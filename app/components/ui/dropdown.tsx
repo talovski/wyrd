@@ -1,6 +1,6 @@
 // import { css } from "@acab/ecsstatic";
 import type { JSX } from "solid-js";
-import { createEffect, createSignal, createUniqueId, onCleanup, Show } from "solid-js";
+import { Show, createEffect, createSignal, createUniqueId, onCleanup } from "solid-js";
 
 interface DropdownProps {
   btnContent: JSX.Element;

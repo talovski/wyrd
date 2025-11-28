@@ -1,25 +1,47 @@
-import { For, Show, createResource } from "solid-js";
+import { For, Show } from "solid-js";
 
-import type { Class5E } from "~/types/5e/class";
+import classes from "~/data/classes.json";
+import features from "~/data/features.json";
+import spells from "~/data/spells.json";
+import type { Feature5E } from "~/types/5e/feature";
 import type { Spell5E } from "~/types/5e/spell";
-import { fetcher } from "~/utils/fetcher";
 
 import { Class } from "./class";
 
-const [classesData] = createResource(async () => {
-  return await fetcher<Class5E[]>("/public/data/5e/classes.json");
-});
+const spellsByClass = spells.reduce(
+  (acc, spell) => {
+    spell.classes.forEach((cl) => {
+      if (!acc[cl.index]) acc[cl.index] = [];
+      acc[cl.index].push(spell);
+    });
+    return acc;
+  },
+  {} as Record<string, Spell5E[]>,
+);
 
-const [spellData] = createResource(async () => {
-  return await fetcher<Spell5E[]>("/public/data/5e/spells.json");
-});
+Object.values(spellsByClass).forEach((list) => list.sort((a, b) => a.level - b.level));
+
+const featuresByClass = features.reduce(
+  (acc, feature) => {
+    const key = feature.class.index;
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(feature);
+    return acc;
+  },
+  {} as Record<string, Feature5E[]>,
+);
+
+Object.values(featuresByClass).forEach((list) => list.sort((a, b) => a.level - b.level));
 
 export const ClassList = () => {
   return (
-    <div>
-      <Show when={classesData.loading || spellData.loading}>Loading</Show>
-      <Show when={classesData() && spellData()}>
-        <For each={classesData()}>{(c) => <Class {...c} spellData={spellData} />}</For>
+    <div class="flex flex-col gap-4">
+      <Show when={classes}>
+        <For each={classes}>
+          {(cl) => (
+            <Class cl={cl} spells={spellsByClass[cl.index]} features={featuresByClass[cl.index]} />
+          )}
+        </For>
       </Show>
     </div>
   );
