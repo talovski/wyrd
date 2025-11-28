@@ -41,7 +41,7 @@
     "vite-plugin-solid": "^2.11.10"
   },
   "nano-staged": {
-    "*": "prettier --write",
+    "*.{css,ts,tsx,html}": "prettier --write",
     "*.{ts,tsx}": "eslint --fix"
   }
 }

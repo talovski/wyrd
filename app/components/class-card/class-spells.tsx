@@ -30,7 +30,6 @@ export const Spells = (props: SpellsProps) => {
           <>
             <h4 class="font-bold">Level 1 Spells</h4>
             <Masonry
-              columns={3}
               elements={e()?.map((spell) => (
                 <Spell spell={spell} />
               ))}
@@ -55,7 +54,7 @@ function Spell(props: SpellProps) {
     <Show
       when={props.expandable}
       fallback={
-        <div class="bg-base-50 p-1 shadow-md">
+        <div class="bg-base-50 border-base-200 rounded-md border px-2 py-1 shadow-sm">
           <h4 class="text-lg font-bold">{spell().name}</h4>
           <div innerHTML={html()} />
         </div>

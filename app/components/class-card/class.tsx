@@ -70,9 +70,7 @@ export const Class = (props: Props) => {
           </div>
         </Show>
       </div>
-      <Show when={features()}>
-        <Features features={features()!} />
-      </Show>
+      <Show when={features()}>{(features) => <Features features={features()} />}</Show>
 
       <Show when={spells()}>{(spells) => <Spells spells={spells()} />}</Show>
     </div>
