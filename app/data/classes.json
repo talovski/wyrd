@@ -6872,9 +6872,7 @@
         },
         {
           "name": "Spellcasting Focus",
-          "desc": [
-            "You can use a holy symbol as a spellcasting focus for your paladin spells."
-          ]
+          "desc": ["You can use a holy symbol as a spellcasting focus for your paladin spells."]
         }
       ]
     },
@@ -9823,9 +9821,7 @@
         },
         {
           "name": "Spellcasting Focus",
-          "desc": [
-            "You can use an arcane focus as a spellcasting focus for your sorcerer spells."
-          ]
+          "desc": ["You can use an arcane focus as a spellcasting focus for your sorcerer spells."]
         }
       ]
     },
@@ -11296,9 +11292,7 @@
         },
         {
           "name": "Spellcasting Focus",
-          "desc": [
-            "You can use an arcane focus as a spellcasting focus for your warlock spells."
-          ]
+          "desc": ["You can use an arcane focus as a spellcasting focus for your warlock spells."]
         }
       ]
     },
@@ -12371,9 +12365,7 @@
         },
         {
           "name": "Spellcasting Focus",
-          "desc": [
-            "You can use an arcane focus as a spellcasting focus for your wizard spells."
-          ]
+          "desc": ["You can use an arcane focus as a spellcasting focus for your wizard spells."]
         }
       ]
     },

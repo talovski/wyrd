@@ -179,9 +179,7 @@
         ],
         "subraces": [],
         "name": "Damage Resistance",
-        "desc": [
-          "You have resistance to the damage type associated with your draconic ancestry."
-        ],
+        "desc": ["You have resistance to the damage type associated with your draconic ancestry."],
         "proficiencies": [],
         "url": "/api/2014/traits/damage-resistance",
         "updated_at": "2025-10-24T20:42:14.945Z"
@@ -313,9 +311,7 @@
         ],
         "subraces": [],
         "name": "Dwarven Combat Training",
-        "desc": [
-          "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."
-        ],
+        "desc": ["You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."],
         "proficiencies": [
           {
             "index": "battleaxes",
@@ -1292,9 +1288,7 @@
         ],
         "subraces": [],
         "name": "Brave",
-        "desc": [
-          "You have advantage on saving throw against being frightened."
-        ],
+        "desc": ["You have advantage on saving throw against being frightened."],
         "proficiencies": [],
         "url": "/api/2014/traits/brave",
         "updated_at": "2025-10-24T20:42:14.945Z"

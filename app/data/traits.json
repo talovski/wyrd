@@ -64,9 +64,7 @@
     ],
     "subraces": [],
     "name": "Damage Resistance",
-    "desc": [
-      "You have resistance to the damage type associated with your draconic ancestry."
-    ],
+    "desc": ["You have resistance to the damage type associated with your draconic ancestry."],
     "proficiencies": [],
     "url": "/api/2014/traits/damage-resistance",
     "updated_at": "2025-10-24T20:42:14.945Z"
@@ -884,9 +882,7 @@
     ],
     "subraces": [],
     "name": "Dwarven Combat Training",
-    "desc": [
-      "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."
-    ],
+    "desc": ["You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."],
     "proficiencies": [
       {
         "index": "battleaxes",
@@ -959,9 +955,7 @@
       }
     ],
     "name": "Elf Weapon Training",
-    "desc": [
-      "You have proficiency with the longsword, shortsword, shortbow, and longbow."
-    ],
+    "desc": ["You have proficiency with the longsword, shortsword, shortbow, and longbow."],
     "proficiencies": [
       {
         "index": "longswords",
@@ -998,9 +992,7 @@
       }
     ],
     "name": "Extra Language",
-    "desc": [
-      "You can speak, read, and write one extra language of your choice."
-    ],
+    "desc": ["You can speak, read, and write one extra language of your choice."],
     "proficiencies": [],
     "language_options": {
       "choose": 1,
@@ -1178,9 +1170,7 @@
     ],
     "subraces": [],
     "name": "Halfling Nimbleness",
-    "desc": [
-      "You can move through the space of any creature that is of a size larger than yours."
-    ],
+    "desc": ["You can move through the space of any creature that is of a size larger than yours."],
     "proficiencies": [],
     "url": "/api/2014/traits/halfling-nimbleness",
     "updated_at": "2025-10-24T20:42:14.945Z"

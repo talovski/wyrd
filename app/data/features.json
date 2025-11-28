@@ -1073,9 +1073,7 @@
     "name": "Bonus Proficiency",
     "level": 1,
     "prerequisites": [],
-    "desc": [
-      "When you choose this domain at 1st level, you gain proficiency with heavy armor."
-    ],
+    "desc": ["When you choose this domain at 1st level, you gain proficiency with heavy armor."],
     "url": "/api/2014/features/bonus-proficiency",
     "updated_at": "2025-10-24T20:42:13.150Z"
   },
@@ -2218,9 +2216,7 @@
     "name": "Divine Health",
     "level": 3,
     "prerequisites": [],
-    "desc": [
-      "By 3rd level, the divine magic flowing through you makes you immune to disease."
-    ],
+    "desc": ["By 3rd level, the divine magic flowing through you makes you immune to disease."],
     "url": "/api/2014/features/divine-health",
     "updated_at": "2025-10-24T20:42:13.150Z"
   },
@@ -2253,9 +2249,7 @@
     "name": "Divine Intervention Improvement",
     "level": 20,
     "prerequisites": [],
-    "desc": [
-      "At 20th level, your call for intervention succeeds automatically, no roll required."
-    ],
+    "desc": ["At 20th level, your call for intervention succeeds automatically, no roll required."],
     "url": "/api/2014/features/divine-intervention-improvement",
     "updated_at": "2025-10-24T20:42:13.150Z"
   },
@@ -3128,9 +3122,7 @@
     "name": "Eldritch Invocation: Beast Speech",
     "level": 2,
     "prerequisites": [],
-    "desc": [
-      "You can cast speak with animals at will, without expending a spell slot."
-    ],
+    "desc": ["You can cast speak with animals at will, without expending a spell slot."],
     "parent": {
       "index": "eldritch-invocations",
       "name": "Eldritch Invocations",
@@ -3298,9 +3290,7 @@
     "name": "Eldritch Invocation: Eldritch Sight",
     "level": 2,
     "prerequisites": [],
-    "desc": [
-      "You can cast detect magic at will, without expending a spell slot."
-    ],
+    "desc": ["You can cast detect magic at will, without expending a spell slot."],
     "parent": {
       "index": "eldritch-invocations",
       "name": "Eldritch Invocations",
@@ -3434,9 +3424,7 @@
     "name": "Eldritch Invocation: Mask of Many Faces",
     "level": 2,
     "prerequisites": [],
-    "desc": [
-      "You can cast disguise self at will, without expending a spell slot."
-    ],
+    "desc": ["You can cast disguise self at will, without expending a spell slot."],
     "parent": {
       "index": "eldritch-invocations",
       "name": "Eldritch Invocations",
@@ -3460,9 +3448,7 @@
         "level": 15
       }
     ],
-    "desc": [
-      "You can cast alter self at will, without expending a spell slot."
-    ],
+    "desc": ["You can cast alter self at will, without expending a spell slot."],
     "parent": {
       "index": "eldritch-invocations",
       "name": "Eldritch Invocations",
@@ -3740,9 +3726,7 @@
         "level": 15
       }
     ],
-    "desc": [
-      "You can cast arcane eye at will, without expending a spell slot."
-    ],
+    "desc": ["You can cast arcane eye at will, without expending a spell slot."],
     "parent": {
       "index": "eldritch-invocations",
       "name": "Eldritch Invocations",
@@ -3793,9 +3777,7 @@
         "level": 9
       }
     ],
-    "desc": [
-      "You can cast speak with dead at will, without expending a spell slot."
-    ],
+    "desc": ["You can cast speak with dead at will, without expending a spell slot."],
     "parent": {
       "index": "eldritch-invocations",
       "name": "Eldritch Invocations",
@@ -4605,9 +4587,7 @@
     "name": "Fighting Style: Archery",
     "level": 1,
     "prerequisites": [],
-    "desc": [
-      "You gain a +2 bonus to attack rolls you make with ranged weapons."
-    ],
+    "desc": ["You gain a +2 bonus to attack rolls you make with ranged weapons."],
     "parent": {
       "index": "fighter-fighting-style",
       "name": "Fighting Style",
@@ -6348,15 +6328,7 @@
         "type": "string",
         "from": {
           "option_set_type": "options_array",
-          "options": [
-            "arctic",
-            "coast",
-            "desert",
-            "forest",
-            "grassland",
-            "mountain",
-            "swamp"
-          ]
+          "options": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp"]
         }
       },
       "invocations": []
@@ -6392,15 +6364,7 @@
         "type": "string",
         "from": {
           "option_set_type": "options_array",
-          "options": [
-            "arctic",
-            "coast",
-            "desert",
-            "forest",
-            "grassland",
-            "mountain",
-            "swamp"
-          ]
+          "options": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp"]
         }
       },
       "invocations": []
@@ -6436,15 +6400,7 @@
         "type": "string",
         "from": {
           "option_set_type": "options_array",
-          "options": [
-            "arctic",
-            "coast",
-            "desert",
-            "forest",
-            "grassland",
-            "mountain",
-            "swamp"
-          ]
+          "options": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp"]
         }
       },
       "invocations": []
@@ -6949,9 +6905,7 @@
     "name": "Patient Defense",
     "level": 2,
     "prerequisites": [],
-    "desc": [
-      "You can spend 1 ki point to take the Dodge action as a bonus action on your turn."
-    ],
+    "desc": ["You can spend 1 ki point to take the Dodge action as a bonus action on your turn."],
     "url": "/api/2014/features/patient-defense",
     "updated_at": "2025-10-24T20:42:13.150Z"
   },
@@ -7436,9 +7390,7 @@
     "name": "Fighting Style: Archery",
     "level": 2,
     "prerequisites": [],
-    "desc": [
-      "You gain a +2 bonus to attack rolls you make with ranged weapons."
-    ],
+    "desc": ["You gain a +2 bonus to attack rolls you make with ranged weapons."],
     "parent": {
       "index": "ranger-fighting-style",
       "name": "Fighting Style",

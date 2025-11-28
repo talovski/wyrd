@@ -461,6 +461,7 @@
       "| Medium | 40 | 13 | +5 to hit, 2d6 + 1 damage | 10 | 12 |",
       "| Large | 50 | 10 | +6 to hit, 2d10 + 2 damage | 14 | 10 |",
       "| Huge | 80 | 10 | +8 to hit, 2d12 + 4 damage | 18 | 6 |",
+      "",
       "An animated object is a construct with AC, hit points, attacks, Strength, and Dexterity determined by its size. Its Constitution is 10 and its Intelligence and Wisdom are 3, and its Charisma is 1. Its speed is 30 feet; if the object lacks legs or other appendages it can use for locomotion, it instead has a flying speed of 30 feet and can hover. If the object is securely attached to a surface or a larger object, such as a chain bolted to a wall, its speed is 0. It has blindsight with a radius of 30 feet and is blind beyond that distance. When the animated object drops to 0 hit points, it reverts to its original object form, and any remaining damage carries over to its original object form.",
       "If you command an object to attack, it can make a single melee attack against a creature within 5 feet of it. It makes a slam attack with an attack bonus and bludgeoning damage determined by its size. The GM might rule that a specific object inflicts slashing or piercing damage based on its form."
     ],
@@ -2655,6 +2656,7 @@
       "| 2-6 | The creature doesn't move or take actions this turn. |",
       "| 7-8 | The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn. |",
       "| 9-10 | The creature can act and move normally. |",
+      "",
       "At the end of each of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target."
     ],
     "higher_level": [
@@ -3235,6 +3237,7 @@
       "| 3 | Overcast or ground fog |",
       "| 4 | Rain, hail, or snow |",
       "| 5 | Torrential rain, driving hail, or blizzard |",
+      "",
       "##### Temperature",
       "| Stage | Condition |",
       "|---|---|",
@@ -3244,6 +3247,7 @@
       "| 4 | Cool |",
       "| 5 | Cold |",
       "| 6 | Arctic cold |",
+      "",
       "##### Wind",
       "| Stage | Condition |",
       "|---|---|",
@@ -3251,7 +3255,8 @@
       "| 2 | Moderate wind |",
       "| 3 | Strong wind |",
       "| 4 | Gale |",
-      "| 5 | Storm |"
+      "| 5 | Storm |",
+      ""
     ],
     "range": "Self",
     "components": ["V", "S", "M"],
@@ -3494,6 +3499,7 @@
       "| Precious metals | 1 hour |",
       "| Gems | 10 minutes |",
       "| Adamantine or mithral | 1 minute |",
+      "",
       "Using any material created by this spell as another spell's material component causes that spell to fail."
     ],
     "higher_level": [
@@ -9017,9 +9023,7 @@
     "higher_level": [],
     "index": "jump",
     "name": "Jump",
-    "desc": [
-      "You touch a creature. The creature's jump distance is tripled until the spell ends."
-    ],
+    "desc": ["You touch a creature. The creature's jump distance is tripled until the spell ends."],
     "range": "Touch",
     "components": ["V", "S", "M"],
     "material": "A grasshopper's hind leg.",
@@ -9583,9 +9587,7 @@
   {
     "index": "longstrider",
     "name": "Longstrider",
-    "desc": [
-      "You touch a creature. The target's speed increases by 10 feet until the spell ends."
-    ],
+    "desc": ["You touch a creature. The target's speed increases by 10 feet until the spell ends."],
     "higher_level": [
       "When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each spell slot above 1st."
     ],
@@ -12457,6 +12459,7 @@
       "| 69-76 | Halfling, stout |",
       "| 77-96 | Human |",
       "| 97-00 | Tiefling |",
+      "",
       "The reincarnated creature recalls its former life and experiences. It retains the capabilities it had in its original form, except it exchanges its original race for the new one and changes its racial traits accordingly."
     ],
     "range": "Touch",
@@ -12978,6 +12981,7 @@
       "| Likeness or picture | -2 |",
       "| Possession or garment | -4 |",
       "| Body part, lock of hair, bit of nail, or the like | -10 |",
+      "",
       "On a successful save, the target isn't affected, and you can't use this spell against it again for 24 hours.",
       "On a failed save, the spell creates an invisible sensor within 10 feet of the target. You can see and hear through the sensor as if you were there. The sensor moves with the target, remaining within 10 feet of it for the duration. A creature that can see invisible objects sees the sensor as a luminous orb about the size of your fist.",
       "Instead of targeting a creature, you can choose a location you have seen before as the target of this spell. When you do, the sensor appears at that location and doesn't move."
@@ -14822,6 +14826,7 @@
       "| Viewed once | 01-43 | 44-53 | 54-73 | 74-100 |",
       "| Description | 01-43 | 44-53 | 54-73 | 74-100 |",
       "| False destination | 01-50 | 51-100 | -- | -- |",
+      "",
       "***Familiarity.*** \"Permanent circle\" means a permanent teleportation circle whose sigil sequence you know.",
       "\"Associated object\" means that you possess an object taken from the desired destination within the last six months, such as a book from a wizard's library, bed linen from a royal suite, or a chunk of marble from a lich's secret tomb.",
       "\"Very familiar\" is a place you have been very often, a place you have carefully studied, or a place you can see when you cast the spell.",
