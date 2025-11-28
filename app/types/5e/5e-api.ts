@@ -10,14 +10,30 @@ export interface ApiResponse5E<T> {
 }
 
 export interface From5E {
-  desc: string;
-  choose: number;
-  type: string;
-  from: {
+  desc?: string;
+  choose?: number;
+  type?: string;
+  from?: {
     option_set_type: string;
-    options: {
-      option_type: string;
-      item: ApiReference5E;
+    equipment_category?: ApiReference5E;
+    options?: {
+      option_type?: string;
+      count?: number;
+      of?: ApiReference5E;
+      item?: ApiReference5E;
+      prerequisites?: {
+        type: string;
+        proficiency: ApiReference5E;
+      }[];
+      choice?: {
+        desc: string;
+        choose: number;
+        type: string;
+        from: {
+          option_set_type: string;
+          equipment_category?: ApiReference5E;
+        };
+      };
     }[];
   };
 }
