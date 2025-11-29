@@ -765,7 +765,7 @@
     "hit_die": 8,
     "proficiency_choices": [
       {
-        "desc": "Choose any three",
+        "desc": "Choose three of any skills",
         "choose": 3,
         "type": "proficiencies",
         "from": {

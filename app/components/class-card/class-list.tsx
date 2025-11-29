@@ -1,4 +1,4 @@
-import { For, Show } from "solid-js";
+import { For, Show, createEffect } from "solid-js";
 
 import classes from "~/data/classes.json";
 import features from "~/data/features.json";
@@ -8,30 +8,44 @@ import type { Spell5E } from "~/types/5e/spell";
 
 import { Class } from "./class";
 
-const spellsByClass = spells.reduce(
-  (acc, spell) => {
-    spell.classes.forEach((cl) => {
-      if (!acc[cl.index]) acc[cl.index] = [];
-      acc[cl.index].push(spell);
-    });
-    return acc;
-  },
-  {} as Record<string, Spell5E[]>,
-);
+const spellsByClass = () => {
+  const grouped = spells.reduce(
+    (acc, spell) => {
+      spell.classes.forEach((cl) => {
+        if (!acc[cl.index]) acc[cl.index] = [];
+        acc[cl.index].push(spell);
+      });
+      return acc;
+    },
+    {} as Record<string, Spell5E[]>,
+  );
 
-Object.values(spellsByClass).forEach((list) => list.sort((a, b) => a.level - b.level));
+  for (const list of Object.values(grouped)) {
+    list.sort((a, b) => a.level - b.level);
+  }
+  return grouped;
+};
 
-const featuresByClass = features.reduce(
-  (acc, feature) => {
-    const key = feature.class.index;
-    if (!acc[key]) acc[key] = [];
-    acc[key].push(feature);
-    return acc;
-  },
-  {} as Record<string, Feature5E[]>,
-);
+createEffect(() => {
+  console.log("Spells by class:", spellsByClass());
+});
 
-Object.values(featuresByClass).forEach((list) => list.sort((a, b) => a.level - b.level));
+const featuresByClass = () => {
+  const grouped = features.reduce(
+    (acc, feature) => {
+      const key = feature.class.index;
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(feature);
+      return acc;
+    },
+    {} as Record<string, Feature5E[]>,
+  );
+
+  for (const list of Object.values(grouped)) {
+    list.sort((a, b) => a.level - b.level);
+  }
+  return grouped;
+};
 
 export const ClassList = () => {
   return (
@@ -39,7 +53,11 @@ export const ClassList = () => {
       <Show when={classes}>
         <For each={classes}>
           {(cl) => (
-            <Class cl={cl} spells={spellsByClass[cl.index]} features={featuresByClass[cl.index]} />
+            <Class
+              cl={cl}
+              spells={spellsByClass()[cl.index]}
+              features={featuresByClass()[cl.index]}
+            />
           )}
         </For>
       </Show>

@@ -10,68 +10,58 @@ import { Spells } from "./class-spells";
 type Props = { cl: Class5E; spells: Spell5E[]; features: Feature5E[] };
 
 export const Class = (props: Props) => {
-  const proficiencies = () => props.cl.proficiencies;
-  const proficiencyChoices = () => props.cl.proficiency_choices;
+  const cl = () => props.cl;
+  const proficiencies = () => cl().proficiencies;
+  const choices = () => cl().proficiency_choices;
 
   const spells = createMemo(() => {
     if (!props.spells) return undefined;
 
-    const lvl1: Spell5E[] = [];
-    const progression: Spell5E[] = [];
+    const byLevel = props.spells.reduce(
+      (acc, sp) => {
+        if (!acc[sp.level]) acc[sp.level] = [];
+        acc[sp.level].push(sp);
+        return acc;
+      },
+      {} as Record<number, Spell5E[]>,
+    );
 
-    props.spells?.forEach((sp) => {
-      if (sp.level === 1) lvl1.push(sp);
-      if (sp.level > 1) progression.push(sp);
-    });
-    return { lvl1, progression };
+    return byLevel;
   });
 
   const features = createMemo(() => {
     if (!props.features) return undefined;
 
-    const lvl1: Feature5E[] = [];
-    const progression: Feature5E[] = [];
+    const byLevel = props.features.reduce(
+      (acc, feat) => {
+        if (!acc[feat.level]) acc[feat.level] = [];
+        acc[feat.level].push(feat);
+        return acc;
+      },
+      {} as Record<number, Feature5E[]>,
+    );
 
-    props.features?.forEach((feat) => {
-      if (feat.level === 1) lvl1.push(feat);
-      if (feat.level > 1) progression.push(feat);
-    });
-    return { lvl1, progression };
+    return byLevel;
   });
 
   return (
     <div class="relative px-4 pt-2">
       <h3 class="bg-base-150 sticky top-0 px-2 pt-1 pb-2 font-serif text-2xl font-bold">
-        {props.cl.name}
+        {cl().name}
       </h3>
       <div>
-        <p>Hit Die: {props.cl.hit_die}</p>
-        <Show when={proficiencies()?.length || proficiencyChoices()?.length}>
-          <div class="grid grid-cols-2">
-            <div>
-              <p class="text-lg font-bold">Proficiencies:</p>
-              <ul>
-                <For each={props.cl.proficiencies}>{(prof) => <li>{prof.name}</li>}</For>
-              </ul>
-            </div>
-            <div>
-              <p class="text-lg font-bold">+</p>
-              <For each={props.cl.proficiency_choices}>
-                {(prof) => (
-                  <div>
-                    <p>{prof.desc}</p>
-                    <ul>
-                      <For each={prof.from.options}>{(opt) => <li>{opt.item?.name}</li>}</For>
-                    </ul>
-                  </div>
-                )}
-              </For>
-            </div>
+        <p>Hit Die: {cl().hit_die}</p>
+        <Show when={proficiencies() || choices()}>
+          <div>
+            <p class="text-lg font-bold">Proficiencies:</p>
+            <ul>
+              <For each={proficiencies()}>{(prof) => <li>{prof.name}</li>}</For>
+            </ul>
           </div>
+          <For each={choices()}>{(prof) => <p>+ {prof.desc}</p>}</For>
         </Show>
       </div>
       <Show when={features()}>{(features) => <Features features={features()} />}</Show>
-
       <Show when={spells()}>{(spells) => <Spells spells={spells()} />}</Show>
     </div>
   );

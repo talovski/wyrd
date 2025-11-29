@@ -1,72 +1,41 @@
 import { marked } from "marked";
 import { For, Show } from "solid-js";
 
-import { Expandable } from "~/components/ui/expandable";
 import type { Spell5E } from "~/types/5e/spell";
-
-import { Masonry } from "../ui/masonry";
+import { Expandable } from "~/ui/expandable";
 
 type SpellsProps = {
-  spells: {
-    lvl1: Spell5E[] | undefined;
-    progression: Spell5E[] | undefined;
-  };
+  spells: Record<number, Spell5E[]>;
 };
 
-type SpellProps = {
-  spell: Spell5E;
-  expandable?: boolean;
-};
-
-export const Spells = (props: SpellsProps) => {
-  const lvl1 = () => props.spells.lvl1;
-  const progression = () => props.spells.progression;
-
+const Spell = (spell: Spell5E) => {
+  const desc = () => marked.parse(spell?.desc.join("\n") || "", { async: false });
   return (
-    <div>
-      <p class="pt-4 pb-2 text-2xl font-bold">Spells</p>
-      <Show when={lvl1()}>
-        {(e) => (
-          <>
-            <h4 class="font-bold">Level 1 Spells</h4>
-            <Masonry
-              elements={e()?.map((spell) => (
-                <Spell spell={spell} />
-              ))}
-            />
-          </>
-        )}
-      </Show>
-      <Show when={progression()?.length}>
-        <Expandable triggerContent={<h4 class="font-bold">Spells Progression</h4>}>
-          <For each={progression()}>{(spell) => <Spell spell={spell} />}</For>
-        </Expandable>
+    <div class="bg-base-50 border-base-200 rounded-md border px-2 py-1 shadow-sm">
+      <h4 class="text-lg font-bold">{spell.name}</h4>
+      <Show when={desc()}>
+        <div innerHTML={desc()} />
       </Show>
     </div>
   );
 };
 
-function Spell(props: SpellProps) {
-  const spell = () => props.spell;
-  const html = () => marked.parse(props.spell.desc.join("\n"), { async: false });
-
+export const Spells = (props: SpellsProps) => {
+  const progression = () => Object.entries(props.spells);
   return (
-    <Show
-      when={props.expandable}
-      fallback={
-        <div class="bg-base-50 border-base-200 rounded-md border px-2 py-1 shadow-sm">
-          <h4 class="text-lg font-bold">{spell().name}</h4>
-          <div innerHTML={html()} />
-        </div>
-      }
-    >
-      <div>
-        <Show when={html()}>
-          <Expandable triggerContent={props.spell.name}>
-            <p innerHTML={html()} />
-          </Expandable>
-        </Show>
-      </div>
+    <Show when={progression()}>
+      {(levels) => (
+        <>
+          <p class="relative pt-4 pb-2 text-2xl font-bold">Spells</p>
+          <For each={levels()}>
+            {([level, spells]) => (
+              <Expandable trigger={<h4 class="font-bold">Level {level} Spells</h4>}>
+                <For each={spells}>{(spell) => <Spell {...spell} />}</For>
+              </Expandable>
+            )}
+          </For>
+        </>
+      )}
     </Show>
   );
-}
+};

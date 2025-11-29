@@ -1,5 +1,5 @@
 import { CheckIcon } from "lucide-solid";
-import { type ComponentProps, type JSX, createUniqueId } from "solid-js";
+import { type ComponentProps, type JSX, Show, createUniqueId } from "solid-js";
 
 import classnames from "~/utils/classnames";
 
@@ -27,8 +27,7 @@ export const Checkbox = (props: CheckboxProps) => {
         class="peer absolute h-0 w-0 opacity-0"
         id={inputId}
         aria-checked={props.checked}
-        default-checked={props.defaultChecked}
-        disabled={props.disabled}
+        checked={props.checked}
         type="checkbox"
       />
       <div
@@ -39,7 +38,9 @@ export const Checkbox = (props: CheckboxProps) => {
         )}
         aria-hidden="true"
       >
-        {props.checked && <CheckIcon class="h-100 w-100" stroke-width={4} />}
+        <Show when={props.checked}>
+          <CheckIcon class="h-100 w-100" stroke-width={4} />
+        </Show>
       </div>
       {props.children}
     </label>

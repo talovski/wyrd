@@ -1,9 +1,9 @@
 import { createSignal } from "solid-js";
 
-import { Checkbox } from "~/components/ui/checkbox";
-import { Dropdown } from "~/components/ui/dropdown";
-import { Expandable } from "~/components/ui/expandable";
-import { Masonry } from "~/components/ui/masonry";
+import { Checkbox } from "~/ui/checkbox";
+import { Dropdown } from "~/ui/dropdown";
+import { Expandable } from "~/ui/expandable";
+import { Masonry } from "~/ui/masonry";
 
 const PrewviewPage = () => {
   const [checked, setChecked] = createSignal(false);
@@ -20,7 +20,7 @@ const PrewviewPage = () => {
         Toggleable
       </Checkbox>
       <button>sdkfmjkfmn</button>
-      <Expandable triggerContent={<p class="text-lg font-bold">Click me to expand</p>}>
+      <Expandable trigger={<p class="text-lg font-bold">Click me to expand</p>}>
         <p>
           <span>Hello, just look at me</span>
           <span>Hello, just look at me</span>
@@ -31,7 +31,7 @@ const PrewviewPage = () => {
           Hello, just look at me
         </p>
       </Expandable>
-      <Expandable triggerContent={<p class="text-lg font-bold">Click me to expand again again</p>}>
+      <Expandable trigger={<p class="text-lg font-bold">Click me to expand again again</p>}>
         <p>Hello, just look at me</p>
         <p>Hello, just look at me</p>
         <p>Hello, just look at me</p>

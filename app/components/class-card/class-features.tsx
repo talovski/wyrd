@@ -2,63 +2,41 @@ import { marked } from "marked";
 import { For, Show } from "solid-js";
 
 import type { Feature5E } from "~/types/5e/feature";
-
-import { Expandable } from "../ui/expandable";
+import { Expandable } from "~/ui/expandable";
 
 type FeaturesProps = {
-  features: {
-    lvl1: Feature5E[] | undefined;
-    progression: Feature5E[] | undefined;
-  };
+  features: Record<number, Feature5E[]>;
 };
 
-type FeatureProps = {
-  feature: Feature5E;
-  expandable?: boolean;
-};
-
-export const Features = (props: FeaturesProps) => {
-  const features = () => props.features;
-  const lvl1 = () => features()?.lvl1;
-  const progression = () => features()?.progression;
-
+const Feature = (props: { feature: Feature5E }) => {
+  const desc = () => marked.parse(props.feature?.desc.join("\n") || "", { async: false });
   return (
     <div>
-      <p class="text-xl font-bold">Features</p>
-      <div class="flex flex-col gap-4">
-        <Show when={lvl1()?.length}>
-          <div>
-            <h4 class="font-bold">Level 1 Features</h4>
-            <For each={lvl1()}>{(feat) => <Feature feature={feat} expandable={false} />}</For>
-          </div>
-        </Show>
-        <Show when={progression()?.length}>
-          <Expandable triggerContent={<h4 class="font-bold">Feature Progression</h4>}>
-            <For each={progression()}>{(feat) => <Feature feature={feat} />}</For>
-          </Expandable>
-        </Show>
-      </div>
+      <h4 class="text-lg font-bold">{props.feature.name}</h4>
+      <div innerHTML={desc()} />
     </div>
   );
 };
 
-export const Feature = (props: FeatureProps) => {
-  const feat = () => props.feature;
-  const html = () => marked.parse(feat()?.desc.join("\n") || "", { async: false });
+const List = (props: { features: Feature5E[] }) => (
+  <For each={props.features}>{(feature) => <Feature feature={feature} />}</For>
+);
+
+export const Features = (props: FeaturesProps) => {
+  const progression = () => Object.entries(props.features);
 
   return (
-    <Show
-      when={props.expandable}
-      fallback={
-        <div>
-          <h4 class="text-lg font-bold">{feat().name}</h4>
-          <div innerHTML={html()} />
-        </div>
-      }
-    >
-      <Expandable triggerContent={feat()?.name}>
-        <div innerHTML={html()} />
-      </Expandable>
+    <Show when={progression()}>
+      <p class="text-xl font-bold">Features</p>
+      <For each={progression()}>
+        {([level, features]) => (
+          <Show when={+level > 1} fallback={<List features={features} />}>
+            <Expandable trigger={<h4 class="font-bold">Level {level} features</h4>}>
+              <List features={features} />
+            </Expandable>
+          </Show>
+        )}
+      </For>
     </Show>
   );
 };

@@ -10,17 +10,22 @@ interface DropdownProps {
 
 export const Dropdown = (props: DropdownProps) => {
   const [open, setOpen] = createSignal(false);
+  const [focusable, setFocusable] = createSignal<HTMLElement[]>([]);
   const dropdownId = createUniqueId();
 
   let btnRef!: HTMLButtonElement;
   let menuRef!: HTMLDivElement;
 
-  const isFocusable = (el: HTMLElement) => {
-    if ((el as HTMLButtonElement | HTMLInputElement).disabled) return false;
-    if (el.getAttribute("aria-disabled") === "true") return false;
+  createEffect(() => {
+    if (!open() || !menuRef) return;
+    const elements = Array.from(
+      menuRef?.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ) as HTMLElement[];
 
-    return el.tabIndex >= 0;
-  };
+    setFocusable(() => elements);
+  });
 
   const handleKeydown = (e: KeyboardEvent) => {
     if (!open()) return;
@@ -34,24 +39,23 @@ export const Dropdown = (props: DropdownProps) => {
 
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
-      const items = Array.from(menuRef.querySelectorAll("*") || []) as HTMLElement[];
-      const focusable = items.filter(isFocusable);
-      const curr = focusable.indexOf(document.activeElement as HTMLElement);
+
+      const curr = focusable().indexOf(document.activeElement as HTMLElement);
 
       if (e.key === "ArrowDown") {
-        const next = curr < focusable.length - 1 ? curr + 1 : 0;
-        focusable[next]?.focus();
+        const next = curr < focusable().length - 1 ? curr + 1 : 0;
+        focusable()[next]?.focus();
       } else {
-        const prev = curr > 0 ? curr - 1 : items.length - 1;
-        focusable[prev]?.focus();
+        const prev = curr > 0 ? curr - 1 : focusable().length - 1;
+        focusable()[prev]?.focus();
       }
       return;
     }
 
-    if ((e.key === "Enter" || e.key === "Space") && !props.multiSelect) {
+    if ((e.key === "Enter" || e.key === " ") && !props.multiSelect) {
       e.preventDefault();
       setOpen(false);
-      btnRef?.focus();
+      btnRef.focus();
     }
   };
 
@@ -77,7 +81,7 @@ export const Dropdown = (props: DropdownProps) => {
     <div class="relative">
       <button
         class={open() ? "scale-[0.98]" : ""}
-        area-expanded={open()}
+        aria-expanded={open()}
         aria-haspopup="true"
         aria-controls={open() ? dropdownId : undefined}
         onClick={() => setOpen((prev) => !prev)}
