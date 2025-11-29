@@ -9,7 +9,7 @@ const PrewviewPage = () => {
   const [checked, setChecked] = createSignal(false);
   return (
     <div>
-      <button>Button</button>
+      <button class="button">Button</button>
       <Dropdown btnContent={"Btn"}>hello i am an item</Dropdown>
       <Checkbox checked={false}>sjdnjsdn</Checkbox>
       <Checkbox checked={true}>Checked</Checkbox>

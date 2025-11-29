@@ -141,8 +141,13 @@
 body {
   @apply bg-base-50 text-base-950 min-h-screen;
 }
+
 .button {
-  @apply border-base-300 bg-base-100 hover:bg-base-150 rounded-sm border px-1.5 py-1.5 font-medium shadow-sm active:scale-98;
+  @apply border-base-300 bg-base-100 hover:bg-base-150 rounded-sm border px-1.5 py-1.5 font-medium shadow-sm active:scale-96;
+}
+
+.button-small {
+  @apply border-base-300 bg-base-100 hover:bg-base-150 rounded-sm border px-1 py-1 font-medium shadow-sm active:scale-96;
 }
 
 /* 
@@ -163,8 +168,14 @@ h4 {
 } */
 
 *:focus-visible {
-  @apply ring-3 ring-purple-800 outline-none;
+  @apply rounded-sm ring-3 ring-purple-800 outline-none;
 }
+/* .peer:focus-visible {
+  @apply ring-3 ring-purple-800 outline-none rounded-md;
+}
+.group:focus-visible {
+  @apply ring-3 ring-purple-800 outline-none rounded-md;
+} */
 
 table {
   @apply block max-w-screen overflow-x-auto;

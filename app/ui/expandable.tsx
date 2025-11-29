@@ -18,7 +18,7 @@ export const Expandable = (props: ExpandableProps) => {
   const contentId = createUniqueId();
 
   return (
-    <div class="flex flex-col overflow-hidden">
+    <div class="flex flex-col overflow-visible">
       <button
         id={triggerId}
         type="button"

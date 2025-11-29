@@ -2,6 +2,8 @@
 import type { JSX } from "solid-js";
 import { Show, createEffect, createSignal, createUniqueId, onCleanup } from "solid-js";
 
+import classnames from "~/utils/classnames";
+
 interface DropdownProps {
   btnContent: JSX.Element;
   children: JSX.Element;
@@ -80,7 +82,7 @@ export const Dropdown = (props: DropdownProps) => {
   return (
     <div class="relative">
       <button
-        class={open() ? "scale-[0.98]" : ""}
+        class={classnames("button-small", open() ? "scale-[0.98]" : "")}
         aria-expanded={open()}
         aria-haspopup="true"
         aria-controls={open() ? dropdownId : undefined}
